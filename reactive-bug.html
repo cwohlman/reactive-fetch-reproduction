@@ -1,0 +1,43 @@
+<head>
+  <title>reactive-bug</title>
+</head>
+
+<body>
+	<div>
+		Reactive return cursor;
+	  	{{> find}}
+	</div>
+  	<div>
+  		Reactive? return cursor.fetch();
+  	  	{{> fetch}}
+  	</div>
+  	<div>
+  		Reactive cursor.fetch(); return cursor;
+  	  	{{> tainted}}
+  	</div>
+  	<div>
+  		Reactive return collection.find().fetch();
+  	  	{{> findFetch}}
+  	</div>
+</body>
+
+<template name="find">
+  {{#each result}}
+  	<p>{{name}}</p>
+  {{/each}}
+</template>
+<template name="fetch">
+  {{#each result}}
+  	<p>{{name}}</p>
+  {{/each}}
+</template>
+<template name="tainted">
+  {{#each result}}
+  	<p>{{name}}</p>
+  {{/each}}
+</template>
+<template name="findFetch">
+  {{#each result}}
+  	<p>{{name}}</p>
+  {{/each}}
+</template>
